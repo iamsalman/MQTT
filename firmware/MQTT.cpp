@@ -119,7 +119,7 @@ bool MQTT::connect(const char *id, const char *user, const char *pass, const cha
          
             write(MQTTCONNECT, buffer, length-5);
             lastInActivity = lastOutActivity = millis();
-         
+         return true;
             while (!_client->available()) {
                 unsigned long t = millis();
                 if (t-lastInActivity > MQTT_KEEPALIVE*1000UL) {
